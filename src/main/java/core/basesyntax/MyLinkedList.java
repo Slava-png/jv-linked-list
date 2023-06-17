@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class MyLinkedList<T> implements MyLinkedListInterface<T> {
-    private Node<T> head ;
+    private Node<T> head;
     private Node<T> tail;
     private int size;
 
@@ -85,11 +85,11 @@ public class MyLinkedList<T> implements MyLinkedListInterface<T> {
 
         unlink(removedNode);
         size--;
-        switch (size) {
-            case 0:
-                head = null;
-            case 1:
-                tail = null;
+        if (size == 0) {
+            head = null;
+        }
+        if (size == 1) {
+            tail = null;
         }
 
         return true;
@@ -153,10 +153,10 @@ public class MyLinkedList<T> implements MyLinkedListInterface<T> {
         }
     }
 
-    private class Node<T>{
-        public Node<T> prev;
-        public T value;
-        public Node<T> next;
+    private class Node<T> {
+        private Node<T> prev;
+        private T value;
+        private Node<T> next;
 
         public Node(Node<T> prev, T value, Node<T> next) {
             this.prev = prev;
